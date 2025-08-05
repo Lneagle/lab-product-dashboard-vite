@@ -1,21 +1,35 @@
 import React, { useState } from 'react';
+import { FormGroup, FormControlLabel, Switch } from '@mui/material';
 import ProductList from './components/ProductList';
 
 const App = () => {
-  // TODO: Define initial product data
+  //Product Inventory
+  const products = [
+    {id: 1, name: "Laptop", price: 500, inStock: true},
+    {id: 1, name: "Phone", price: 200, inStock: false},
+    {id: 1, name: "Keyboard", price: 60, inStock: true},
+    {id: 1, name: "Tablet", price: 150, inStock: false}
+  ]
 
-  // TODO: Implement state to manage filtering
+  //Implement state to manage filtering
+  const [filter, setFilter] = useState(false);
 
-  // TODO: Implement logic to filter products based on availability
+  const handleChange = (event) => {
+    setFilter(event.target.checked);
+  };
+
+  // Filter products based on availability
+  const filteredProducts = filter ? products.filter((product) => product.inStock === filter) : products;
 
   return (
     <div>
-      <h1>{/* TODO: Add 'Product Dashboard' title here */}</h1>
+      <h1>Product Dashboard</h1>
       
-      {/* TODO: Add buttons to allow filtering by availability */}
-
-      {/* TODO: Render the ProductList component and pass filtered products */}
-      
+      {/* Use MUI Switch to filter by availability */}
+      <FormGroup>
+        <FormControlLabel control={<Switch onChange={handleChange}/>} label="In Stock" />
+      </FormGroup>
+      <ProductList products={filteredProducts} />
     </div>
   );
 };

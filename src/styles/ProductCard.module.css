@@ -1,3 +1,19 @@
-/* TODO: Style the product card container */
+/* Product card container */
+.card {
+    border: 1px solid #999;
+    border-radius: .5em;
+    margin: 1em 0;
+}
 
-/* TODO: Add special styling for out-of-stock products */
+.card .message {
+    color: green;
+}
+
+/* Special styling for out-of-stock products */
+.outOfStockClass {
+    color: #999;
+}
+
+.outOfStockClass .message {
+    color: red;
+}
